@@ -41,7 +41,8 @@ export default {
   computed: {},
   methods: {
     login () {
-      this.$router.push({ path: '/home' })
+      // this.$router.push({ path: '/home' })
+      this.go('home')
       // this.showSlideToCloseModal = true
     },
     closeModal () {
