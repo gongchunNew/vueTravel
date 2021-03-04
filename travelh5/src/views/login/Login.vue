@@ -1,57 +1,39 @@
 !<template>
   <div class="wrapper">
-    login 页面
-    <!-- <div class="loginBtn" @click="login">登录按钮</div> -->
-    <div class="loginBtn" @click="login">弹出按钮</div>
-    <!-- <Modal :isShow='showSlideToCloseModal' @closeModal="closeModal"></Modal> -->
-    <!-- <Datepicker></Datepicker> -->
-    <!-- <selectcolumn @select="getSelectValue"></selectcolumn>
-    {{selected}} -->
-    <!-- <selectPicker></selectPicker> -->
+      <div class="menuView">
+            <p class="menuLine" v-for="(menu,index) of menuList" :key="menu.path" @click="goto(menu)">
+              {{ index + 1}} {{menu.name}}
+            </p>
+      </div>
   </div>
 </template>
 
 <script>
-// import Modal from '../../components/UI/Modal'
-// import Datepicker from '../../components/UI/Datepicker'
-// import selectcolumn from '../../components/UI/SelectOption/SelectColumn'
-// import selectPicker from '../../components/UI/SelectOption/selectPicker'
 
 export default {
   name: 'Login',
-  components: {
-    // Modal,
-    // Datepicker
-    // selectcolumn
-    // selectPicker
-  },
+  components: {},
   props: {},
   data () {
     return {
-      showSlideToCloseModal: false,
-      selected: 0,
-      address: {
-        province: '',
-        city: ''
-      },
-      provinceList: [{ id: '1', name: '南京' }, { id: '2', name: '江苏' }, { id: '3', name: '湖南' }, { id: '4', name: '新建' }]
+      menuList: [
+        { name: 'store的使用', path: 'demoStore' },
+        { name: 'mixin的使用', path: 'demoMixin' },
+        { name: 'http请求', path: 'demoHttp' },
+        { name: 'UI相关', path: 'demoUI' },
+        { name: '图片懒加载', path: 'demoImg' },
+        { name: '事件防抖与节流', path: 'demoFangdou' },
+        { name: 'eventBus兄弟组件之间传值', path: 'demoEvent' },
+        { name: 'app和微信', path: 'demoWeChat' }
+      ]
     }
   },
   watch: {},
   computed: {},
   methods: {
-    login () {
-      // this.$router.push({ path: '/home' })
-      this.go('home')
-      // this.showSlideToCloseModal = true
-    },
-    closeModal () {
-      this.showSlideToCloseModal = false
-    },
-    getSelectValue (value) {
-      this.selected = value
+    goto (obj) {
+      this.go(obj.path)
     }
-
   },
   created () {},
   mounted () {
@@ -62,9 +44,10 @@ export default {
 <style lang="scss" scoped>
 .wrapper{
   font-size: 16px;
-  .loginBtn{
-    height: 100px;
-    width: 200px;
+  .menuView{
+    .menuLine {
+      height: 40px;
+    }
   }
 }
 </style>
